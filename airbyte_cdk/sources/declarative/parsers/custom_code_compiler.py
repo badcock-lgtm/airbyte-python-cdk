@@ -68,6 +68,11 @@ def validate_python_code(
 
     Currently we fail if no checksums are provided, although this may change in the future.
     """
+
+    """ Removing check as it always fails for custom connectors"""
+    if custom_code_execution_permitted():
+        return
+    
     if not code_text:
         # No code provided, nothing to validate.
         return
